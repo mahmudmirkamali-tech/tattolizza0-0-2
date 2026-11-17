@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --color-ink: #14110f;
+  --color-paper: #f4ebdf;
+  --color-blush: #c4897c;
+  --color-gold: #c4a265;
+  --color-wine: #3c2622;
+  --color-mist: #a8988c;
+  --color-veil: #1c1816;
+  --color-skin: #e7b9a4;
+  --color-inkline: #3a1820;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled) {
+    transition: scale 150ms ease-out;
+  }
+
+  button:not(:disabled):active {
+    scale: 0.96;
+  }
+}
+
+@keyframes stitch {
+  from { stroke-dashoffset: 120; }
+  to { stroke-dashoffset: 0; }
+}
+
+.stitch-line {
+  stroke-dasharray: 120;
+  animation: stitch 1.4s ease forwards;
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-paper);
+}
+
+.wing {
+  width: 9.5rem;
+  height: 2.8rem;
+  color: var(--color-gold);
+}
+
+.wing-stroke {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+
+.lockup.is-on .wing-stroke,
+.lockup.is-settled .wing-stroke {
+  stroke-dashoffset: 0;
+}
+
+.lockup.is-on .wing-stroke {
+  animation: draw-wing 1.15s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.lockup-artist {
+  margin-top: 0.75rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  color: var(--color-gold);
+  opacity: 0;
+}
+
+.lockup-word {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 6.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  line-height: 1;
+  opacity: 0;
+}
+
+.lockup-rule {
+  display: block;
+  height: 1px;
+  width: 0;
+  margin-top: 1rem;
+  background: var(--color-gold);
+  opacity: 0.7;
+}
+
+.lockup.is-on .lockup-artist {
+  animation: rise 700ms 720ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+.lockup.is-on .lockup-word {
+  animation: tighten 900ms 880ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+.lockup.is-on .lockup-rule {
+  animation: rule 700ms 1200ms cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.lockup.is-settled .lockup-artist,
+.lockup.is-settled .lockup-word {
+  opacity: 1;
+}
+.lockup.is-settled .lockup-word {
+  letter-spacing: 0.16em;
+}
+.lockup.is-settled .lockup-rule {
+  width: 4.5rem;
+}
+
+@keyframes draw-wing {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes rise {
+  to { opacity: 1; }
+}
+@keyframes tighten {
+  to { opacity: 1; letter-spacing: 0.16em; }
+}
+@keyframes rule {
+  to { width: 4.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stitch-line,
+  .wing-stroke,
+  .lockup-artist,
+  .lockup-word,
+  .lockup-rule {
+    animation: none;
+  }
+  .lockup .wing-stroke { stroke-dashoffset: 0; }
+  .lockup .lockup-artist,
+  .lockup .lockup-word { opacity: 1; }
+  .lockup .lockup-word { letter-spacing: 0.16em; }
+  .lockup .lockup-rule { width: 4.5rem; }
+}

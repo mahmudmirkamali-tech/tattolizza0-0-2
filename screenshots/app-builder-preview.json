@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Tattolizza",
+      "hasCanvas": false,
+      "bodyTextLen": 32,
+      "bodyTextHash": "b74d52a4de3e71fe8c5b0b77cb3bc4b892374750302874f3105e2481c8eab797",
+      "bodyTextPrefix": "PARVAZ TATTOLIZZA رد شدن از نشان",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Tattolizza",
+      "hasCanvas": false,
+      "bodyTextLen": 32,
+      "bodyTextHash": "b74d52a4de3e71fe8c5b0b77cb3bc4b892374750302874f3105e2481c8eab797",
+      "bodyTextPrefix": "PARVAZ TATTOLIZZA رد شدن از نشان",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
